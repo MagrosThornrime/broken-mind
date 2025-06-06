@@ -41,7 +41,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nenq2"]
 size = Vector2(14, 13)
 
-[node name="Enemy" type="Node2D"]
+[node name="Enemy" type="RigidBody2D"]
+gravity_scale = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -49,8 +50,6 @@ sprite_frames = SubResource("SpriteFrames_xwavj")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_nenq2")

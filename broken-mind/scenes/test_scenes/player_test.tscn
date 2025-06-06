@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://dx72g2aajqxis"]
 
-[ext_resource type="PackedScene" uid="uid://cint20u0h5gfp" path="res://scenes/player.tscn" id="2_q04u1"]
+[ext_resource type="PackedScene" uid="uid://dwfs0okv3hq81" path="res://scenes/player.tscn" id="2_q04u1"]
 [ext_resource type="Texture2D" uid="uid://be3x8tee68v6x" path="res://images/cave.png" id="3_4r5ld"]
 [ext_resource type="PackedScene" uid="uid://rbsm77l0yyof" path="res://scenes/enemy.tscn" id="3_r4ost"]
 
@@ -311,3 +311,5 @@ tile_set = SubResource("TileSet_p57ef")
 
 [node name="Enemy" parent="." instance=ExtResource("3_r4ost")]
 position = Vector2(-21, 13)
+linear_damp = 1.0
+angular_damp = 150.0
