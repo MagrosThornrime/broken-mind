@@ -1,5 +1,21 @@
-[gd_scene format=3 uid="uid://b6tky5h4h0fka"]
+[gd_scene load_steps=4 format=3 uid="uid://b6tky5h4h0fka"]
+
+[ext_resource type="PackedScene" uid="uid://cint20u0h5gfp" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://bjqo2104koywe" path="res://images/fruit.png" id="2_yqjtg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnu2h"]
+atlas = ExtResource("2_yqjtg")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Game" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-15, -24)
+texture = SubResource("AtlasTexture_lnu2h")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-53.0605, 26.1223)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
