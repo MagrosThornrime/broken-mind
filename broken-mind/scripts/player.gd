@@ -4,6 +4,7 @@ const SPEED = 50
 @onready var sprite: AnimatedSprite2D =  $AnimatedSprite2D
 @onready var body: CharacterBody2D = $CharacterBody2D
 @onready var shape: CollisionShape2D = $CharacterBody2D/CollisionShape2D
+@onready var tilemap: TileMapLayer = $"../TileMapLayer"
 
 enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
@@ -37,3 +38,17 @@ func _physics_process(_delta: float) -> void:
 	body.move_and_slide()
 	global_position = body.global_position
 	body.position = Vector2.ZERO
+
+
+func _process(_delta):
+	var global_pos = Vector2i(global_position[0],global_position[1]+11)
+	var local_pos = tilemap.to_local(global_pos)
+	var tile_coords = tilemap.local_to_map(local_pos)
+
+	var atlas_coords = tilemap.get_cell_atlas_coords(tile_coords)
+
+	#if source_id != -1:
+		#print("Stoję na kafelku:")
+		#print("Atlas coords: ", atlas_coords)
+	#else:
+		#print("Brak kafelka pod obiektem")
