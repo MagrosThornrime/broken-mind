@@ -301,6 +301,7 @@ sources/0 = SubResource("TileSetAtlasSource_iywne")
 [node name="Player" parent="." instance=ExtResource("2_q04u1")]
 z_index = 10
 position = Vector2(-53.0605, 26.1223)
+motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -312,4 +313,4 @@ tile_set = SubResource("TileSet_p57ef")
 [node name="Enemy" parent="." instance=ExtResource("3_r4ost")]
 position = Vector2(-21, 13)
 linear_damp = 1.0
-angular_damp = 150.0
+angular_damp = 1.0
