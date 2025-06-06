@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://btxi511x8y15d" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://2rx7oalaayvy" path="res://images/modern_guy.png" id="2_g2els"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(14, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
 region = Rect2(0, 24, 24, 24)
@@ -11,9 +14,9 @@ region = Rect2(0, 24, 24, 24)
 atlas = ExtResource("2_g2els")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("2_g2els")
-region = Rect2(0, 72, 24, 24)
+region = Rect2(24, 72, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_g2els")
@@ -35,10 +38,6 @@ region = Rect2(48, 24, 24, 24)
 atlas = ExtResource("2_g2els")
 region = Rect2(72, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("2_g2els")
-region = Rect2(0, 72, 24, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("2_g2els")
 region = Rect2(24, 72, 24, 24)
@@ -50,6 +49,10 @@ region = Rect2(48, 72, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("2_g2els")
 region = Rect2(72, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 72, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
 atlas = ExtResource("2_g2els")
@@ -103,7 +106,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qlg0r")
+"texture": SubResource("AtlasTexture_g2els")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -136,9 +139,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oprun")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_a8ls1")
 }, {
 "duration": 1.0,
@@ -146,6 +146,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -186,19 +189,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
-size = Vector2(14, 16)
-
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_fjrip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"walk_down"
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_fjrip")
+animation = &"walk_left"
