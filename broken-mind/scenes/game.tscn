@@ -205,6 +205,5 @@ scale = Vector2(0.154911, 0.14304)
 script = ExtResource("7_u5sy4")
 
 [connection signal="timeout" from="Manager/Timer" to="Manager" method="_on_timer_timeout"]
-
 [connection signal="timeout" from="TileMapLayer/Timer" to="TileMapLayer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
