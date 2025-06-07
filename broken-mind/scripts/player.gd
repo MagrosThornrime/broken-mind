@@ -61,7 +61,7 @@ func _physics_process(_delta: float) -> void:
 					collision.get_collider().apply_central_impulse(
 						-collision.get_normal() * PUSH_FORCE
 					)
-				elif layer & (1 << 1):
+				elif layer & (1 << 4):
 					if !inviolable:
 						hp-=1
 						inviolable=true
