@@ -323,7 +323,7 @@ position = Vector2(-53.0605, 26.1223)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(53.0605, -26.1223)
+position = Vector2(1.0605, 0.877701)
 zoom = Vector2(4, 4)
 
 [node name="Timer" type="Timer" parent="Player"]

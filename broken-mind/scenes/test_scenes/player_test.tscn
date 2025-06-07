@@ -317,5 +317,3 @@ script = ExtResource("3_l265t")
 
 [node name="Enemy" parent="." instance=ExtResource("3_r4ost")]
 position = Vector2(-21, 13)
-linear_damp = 1.0
-angular_damp = 1.0
