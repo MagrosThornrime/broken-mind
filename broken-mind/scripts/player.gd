@@ -92,11 +92,13 @@ func _process(_delta):
 				print("spadles")
 				hp-=1
 				inviolable=true
+				sprite.play("invul")
 				timer.start()
 		else:
 			print("spadles")
 			hp-=1
 			inviolable=true
+			sprite.play("invul")
 			timer.start()
 	if hp<=0:
 		hp=4
