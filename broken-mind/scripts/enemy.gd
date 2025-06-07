@@ -4,7 +4,10 @@ var player
 var score_manager: Node
 var tilemap: TileMapLayer
 @onready var timer: Timer = $Timer
-var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
+var damaging_bullet: PackedScene = preload("res://scenes/damaging_bullet.tscn")
+var pushing_bullet: PackedScene = preload("res://scenes/pushing_bullet.tscn")
+
+enum BULLET_TYPE {damaging, pushing}
 
 func _process(_delta):
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
@@ -26,7 +29,11 @@ func _ready():
 	timer.start(3)
 
 func _on_timer_timeout() -> void:
-	var bullet = bullet_scene.instantiate()
+	var bullet = null
+	if randi_range(0, 9) > 3:
+		bullet = damaging_bullet.instantiate()
+	else:
+		bullet = pushing_bullet.instantiate()
 	bullet.global_position = global_position
 	bullet.target_position = player.global_position
 	get_tree().current_scene.add_child(bullet)
