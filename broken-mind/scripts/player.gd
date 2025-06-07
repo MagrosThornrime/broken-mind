@@ -5,9 +5,11 @@ const PUSH_FORCE = 50
 @onready var sprite: AnimatedSprite2D =  $AnimatedSprite2D
 @onready var shape: CollisionShape2D = $CollisionShape2D
 @onready var tilemap: TileMapLayer = $"../TileMapLayer"
+@onready var timer: Timer = $Timer
 
 enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
+var inviolable = true
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -52,13 +54,17 @@ func _process(_delta):
 
 	var source_id = tilemap.get_cell_source_id(tile_coords)
 	var atlas_coords = tilemap.get_cell_atlas_coords(tile_coords)
-
-	#if source_id != -1:
-		#print("Stoję na kafelku:")
-		#print("Source ID: ", source_id)
-		#print("Atlas coords: ", atlas_coords)
-	#else:
-		#print("Brak kafelka pod obiektem")
+	if !inviolable:
+		if source_id != -1:
+			if atlas_coords==Vector2i(0,19):
+				print("spadles")
+				inviolable=true
+				timer.start()
+		else:
+			print("spadles")
+			inviolable=true
+			timer.start()
+		
 		
 func _unhandled_input(event):
 	if event.is_action_pressed("fire"):
@@ -74,12 +80,12 @@ func _unhandled_input(event):
 		var local_pos = tilemap.to_local(fire_pos)
 		var tile_coords = tilemap.local_to_map(local_pos)
 		var source_id = tilemap.get_cell_source_id(tile_coords)
-		var atlas_coords = tilemap.get_cell_atlas_coords(tile_coords)
 		
 		if source_id != -1:
 			tilemap.set_cell(Vector2i(tile_coords),0,Vector2i(0,19))
 		else:
 			print("Strzał poza mapę")
+		
 	if event.is_action_pressed("bomb"):
 		var fire_pos
 		if direction == MOVE_DIRECTION.right:
@@ -111,3 +117,10 @@ func _unhandled_input(event):
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),0,Vector2i(0,19))
 		if source_id4 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),0,Vector2i(0,19))
+
+func _ready():
+	timer.start()
+
+func _on_timer_timeout() -> void:
+	timer.stop()
+	inviolable = false
