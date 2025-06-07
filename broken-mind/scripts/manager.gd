@@ -52,7 +52,7 @@ func _ready():
 	tura=0
 	spawn_multiple_enemies(2)
 	en_nr+=2
-	timer.start(15)
+	timer.start(3)
 	
 func _process(_delta):
 	EnemiesManager.manager = %Manager

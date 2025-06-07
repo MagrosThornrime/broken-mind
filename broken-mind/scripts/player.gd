@@ -75,7 +75,7 @@ func _physics_process(_delta: float) -> void:
 						additional_velocity = BULLET_PUSH_FORCE
 					var bullet_id = collision.get_collider_id()
 					instance_from_id(bullet_id). queue_free()
-				elif layer & (1 << 4):
+				elif layer & (1 << 5):
 					if hp<4:
 						hp+=1
 					var heart = collision.get_collider_id()
