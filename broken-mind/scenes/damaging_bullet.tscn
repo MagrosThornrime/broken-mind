@@ -257,9 +257,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
 radius = 3.0
 
-[node name="pushing_bullet" type="RigidBody2D"]
-collision_layer = 2
-collision_mask = 2
+[node name="damaging_bullet" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 0
 gravity_scale = 0.0
 max_contacts_reported = 4
 script = ExtResource("1_s3dul")
