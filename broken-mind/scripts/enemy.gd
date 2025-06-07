@@ -18,7 +18,7 @@ func _process(_delta):
 	var atlas_coords = tilemap.get_cell_atlas_coords(tile_coords)
 	
 	if source_id != -1:
-		if atlas_coords==Vector2i(0,19):
+		if atlas_coords==Vector2i(2,2):
 			score_manager.add_point()
 			queue_free()
 	else:
