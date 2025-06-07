@@ -1,8 +1,7 @@
 extends RigidBody2D
 
-@onready var score_manager: Node = $"../ScoreManager"
-
-@onready var tilemap: TileMapLayer = $"../TileMapLayer"
+var score_manager: Node
+var tilemap: TileMapLayer
 
 func _process(_delta):
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)

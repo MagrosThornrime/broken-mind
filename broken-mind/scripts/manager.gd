@@ -28,8 +28,9 @@ func spawn_enemy(tiles: Array):
 	tiles.remove_at(index)
 
 	var world_pos = tilemap.map_to_local(tile_pos) + tilemap.position
-
 	var enemy = enemy_scene.instantiate()
+	enemy.score_manager = $"../ScoreManager"
+	enemy.tilemap = tilemap
 	enemy.global_position = Vector2i(world_pos[0],world_pos[1]-6)
 	add_child(enemy)
 
