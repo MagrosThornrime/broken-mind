@@ -183,6 +183,7 @@ func _on_timer_timeout() -> void:
 
 func die():
 	Music.stop()
+	Music.volume_db += 3
 	Music.stream = load("res://audio/bleeding_out2.ogg")
 	Music.play()
 	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
