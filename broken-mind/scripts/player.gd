@@ -11,19 +11,22 @@ enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
 var inviolable = true
 var hp = 4
+var additional_velocity = 0
+var additional_push_vector = Vector2(0, 0)
+const BULLET_PUSH_FORCE = 150
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if(input_direction[0] > 0 and velocity != Vector2.ZERO):
+	if(input_direction[0] > 0):
 		sprite.play("walk_right")
 		direction = MOVE_DIRECTION.right
-	if(input_direction[0] < 0 and velocity != Vector2.ZERO):
+	if(input_direction[0] < 0):
 		sprite.play("walk_left")
 		direction = MOVE_DIRECTION.left
-	if(input_direction[1] < 0 and velocity != Vector2.ZERO):
+	if(input_direction[1] < 0):
 		sprite.play("walk_up")
 		direction = MOVE_DIRECTION.front
-	if(input_direction[1] > 0 and velocity != Vector2.ZERO):
+	if(input_direction[1] > 0):
 		sprite.play("walk_down")
 		direction = MOVE_DIRECTION.back
 	if velocity == Vector2.ZERO:
@@ -36,9 +39,13 @@ func _physics_process(_delta: float) -> void:
 				sprite.play("idle_front")
 			MOVE_DIRECTION.back:
 				sprite.play("idle_back")
-	velocity = input_direction * SPEED
+	velocity = input_direction * SPEED + additional_velocity * additional_push_vector
 	apply_floor_snap()
 	move_and_slide()
+	velocity -= additional_velocity * additional_push_vector
+	additional_velocity -= 2
+	if additional_velocity < 0:
+		additional_velocity = 0
 	
 	for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
@@ -49,10 +56,22 @@ func _physics_process(_delta: float) -> void:
 					collision.get_collider().apply_central_impulse(
 						-collision.get_normal() * PUSH_FORCE
 					)
-				elif layer & (1 << 1) and !inviolable:
-					hp-=1
-					inviolable=true
-					timer.start()
+				elif layer & (1 << 1):
+					if !inviolable:
+						hp-=1
+						inviolable=true
+						timer.start()
+					var bullet_id = collision.get_collider_id()
+					instance_from_id(bullet_id). queue_free()
+				elif layer & (1 << 3):
+					if !inviolable:
+						additional_push_vector = body.linear_velocity.normalized()
+						additional_velocity = BULLET_PUSH_FORCE
+						inviolable=true
+						timer.start()
+					var bullet_id = collision.get_collider_id()
+					instance_from_id(bullet_id). queue_free()
+
 
 
 func _process(_delta):
