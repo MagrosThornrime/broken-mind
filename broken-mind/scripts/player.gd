@@ -85,7 +85,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta):
-	$Label2.text = "Hp: " + str(hp)
+	$Label2.text = "Hp: " + str(hp) + "/4"
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
 	var local_pos = tilemap.to_local(global_pos)
 	var tile_coords = tilemap.local_to_map(local_pos)
