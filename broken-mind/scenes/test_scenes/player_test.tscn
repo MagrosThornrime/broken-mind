@@ -305,7 +305,6 @@ script = ExtResource("1_w5udf")
 
 [node name="Player" parent="." instance=ExtResource("2_q04u1")]
 z_index = 10
-motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
