@@ -6,9 +6,8 @@ var target_position: Vector2
 func _ready():
 	var direction = (target_position - global_position).normalized()
 	linear_velocity = direction * speed
-	#TODO:
-	#Po przeleceniu pewnego dystansu pocisk usuwa się ze sceny
-	pass
+	await get_tree().create_timer(4).timeout
+	queue_free()
 
 #TODO:
 #Kolizja pocisku i gracza
