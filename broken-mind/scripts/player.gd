@@ -10,6 +10,7 @@ const PUSH_FORCE = 50
 enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
 var inviolable = true
+var hp = 4
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -48,6 +49,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta):
+	$Label2.text = "Hp: " + str(hp)
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
 	var local_pos = tilemap.to_local(global_pos)
 	var tile_coords = tilemap.local_to_map(local_pos)
@@ -58,13 +60,17 @@ func _process(_delta):
 		if source_id != -1:
 			if atlas_coords==Vector2i(0,19):
 				print("spadles")
+				hp-=1
 				inviolable=true
 				timer.start()
 		else:
 			print("spadles")
+			hp-=1
 			inviolable=true
 			timer.start()
-		
+	if hp<=0:
+		hp=4
+		print("umarłeś")
 		
 func _unhandled_input(event):
 	if event.is_action_pressed("fire"):
