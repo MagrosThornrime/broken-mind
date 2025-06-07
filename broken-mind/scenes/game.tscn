@@ -209,11 +209,9 @@ script = ExtResource("7_u5sy4")
 [node name="granat" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_gee14")
 volume_db = 2.0
-bus = &"sfx"
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_gee14")
-bus = &"sfx"
 
 [connection signal="timeout" from="Manager/Timer" to="Manager" method="_on_timer_timeout"]
 [connection signal="timeout" from="TileMapLayer/Timer" to="TileMapLayer" method="_on_timer_timeout"]

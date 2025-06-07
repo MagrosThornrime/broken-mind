@@ -33,6 +33,7 @@ Ruch - wasd
 Rzut granatem - g
 
 Odnowa pól - spacja"
+horizontal_alignment = 1
 
 [node name="Return" type="TextureButton" parent="."]
 offset_left = -95.0
