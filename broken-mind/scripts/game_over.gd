@@ -8,6 +8,9 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	EnemiesManager.points = 0
+	Music.stop()
+	Music.stream = load("res://audio/Battle of the Void.mp3")
+	Music.play()
 	get_tree().change_scene_to_file("res://scenes//game.tscn")
 
 

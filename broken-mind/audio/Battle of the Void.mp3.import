@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p0muytbfmap5"
+path="res://.godot/imported/Battle of the Void.mp3-b0fd675f10ebc39a684fab8cebd35bb4.mp3str"
+
+[deps]
+
+source_file="res://audio/Battle of the Void.mp3"
+dest_files=["res://.godot/imported/Battle of the Void.mp3-b0fd675f10ebc39a684fab8cebd35bb4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

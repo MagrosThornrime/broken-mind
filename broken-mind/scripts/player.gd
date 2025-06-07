@@ -176,4 +176,7 @@ func _on_timer_timeout() -> void:
 	inviolable = false
 
 func die():
+	Music.stop()
+	Music.stream = load("res://audio/bleeding_out2.ogg")
+	Music.play()
 	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
