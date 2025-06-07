@@ -2,8 +2,11 @@ extends Node
 
 @onready var tilemap: TileMapLayer = $"../TileMapLayer"
 var enemy_scene: PackedScene = preload("res://scenes/enemy.tscn")
+var heart_scene: PackedScene = preload("res://scenes/heart.tscn")
 var tura = 0
 var en_nr = 0
+@onready var timer: Timer = $Timer
+var is_heart = false
 
 func get_all_valid_tiles() -> Array:
 	var valid_tiles = []
@@ -49,6 +52,7 @@ func _ready():
 	tura=0
 	spawn_multiple_enemies(2)
 	en_nr+=2
+	timer.start(15)
 	
 func _process(_delta):
 	EnemiesManager.manager = %Manager
@@ -56,3 +60,24 @@ func _process(_delta):
 		tura=min(16,tura+1)
 		spawn_multiple_enemies(2+int(tura/2))
 		en_nr+=2+int(tura/2)
+
+func spawn_heart():
+	var tiles = get_all_valid_tiles()
+	if tiles.is_empty():
+		print("Brak dostępnych kafelków do spawnu!")
+		return
+
+	var index = randi() % tiles.size()
+	var tile_pos = tiles[index]
+	tiles.remove_at(index)
+
+	var world_pos = tilemap.map_to_local(tile_pos) + tilemap.position
+	var heart = heart_scene.instantiate()
+	heart.global_position = Vector2i(world_pos[0],world_pos[1]-6)
+	add_child(heart)
+
+
+func _on_timer_timeout() -> void:
+	if !is_heart:
+		spawn_heart()
+		is_heart=true

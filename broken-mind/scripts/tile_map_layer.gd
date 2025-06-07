@@ -26,7 +26,6 @@ func void_tiles(n):
 						all_coords.append(pos)
 	
 	all_coords.shuffle()
-	var player_coords = local_to_map(to_local($"../Player".global_position))
 	for i in range(min(n, all_coords.size())):
 		set_cell(all_coords[i], 0, Vector2i(2, 2))
 	
