@@ -2,6 +2,8 @@ extends Node
 
 @onready var tilemap: TileMapLayer = $"../TileMapLayer"
 var enemy_scene: PackedScene = preload("res://scenes/enemy.tscn")
+var tura = 0
+var en_nr = 0
 
 func get_all_valid_tiles() -> Array:
 	var valid_tiles = []
@@ -45,4 +47,12 @@ func spawn_multiple_enemies(count: int):
 		spawn_enemy(tiles)
 
 func _ready():
-	spawn_multiple_enemies(3)
+	tura=0
+	spawn_multiple_enemies(2)
+	en_nr+=2
+	
+func _process(_delta):
+	if en_nr==0:
+		tura=min(16,tura+1)
+		spawn_multiple_enemies(2+int(tura/2))
+		en_nr+=2+int(tura/2)

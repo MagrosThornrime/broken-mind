@@ -9,7 +9,7 @@ const PUSH_FORCE = 50
 
 enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
-var inviolable = true
+var inviolable = false
 var hp = 4
 var additional_velocity = 0
 var additional_push_vector = Vector2(0, 0)
@@ -17,28 +17,29 @@ const BULLET_PUSH_FORCE = 150
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if(input_direction[0] > 0):
-		sprite.play("walk_right")
-		direction = MOVE_DIRECTION.right
-	if(input_direction[0] < 0):
-		sprite.play("walk_left")
-		direction = MOVE_DIRECTION.left
-	if(input_direction[1] < 0):
-		sprite.play("walk_up")
-		direction = MOVE_DIRECTION.front
-	if(input_direction[1] > 0):
-		sprite.play("walk_down")
-		direction = MOVE_DIRECTION.back
-	if velocity == Vector2.ZERO:
-		match direction:
-			MOVE_DIRECTION.right:
-				sprite.play("idle_right")
-			MOVE_DIRECTION.left:
-				sprite.play("idle_left")
-			MOVE_DIRECTION.front:
-				sprite.play("idle_front")
-			MOVE_DIRECTION.back:
-				sprite.play("idle_back")
+	if !inviolable:
+		if(input_direction[0] > 0):
+			sprite.play("walk_right")
+			direction = MOVE_DIRECTION.right
+		if(input_direction[0] < 0):
+			sprite.play("walk_left")
+			direction = MOVE_DIRECTION.left
+		if(input_direction[1] < 0):
+			sprite.play("walk_up")
+			direction = MOVE_DIRECTION.front
+		if(input_direction[1] > 0):
+			sprite.play("walk_down")
+			direction = MOVE_DIRECTION.back
+		if velocity == Vector2.ZERO:
+			match direction:
+				MOVE_DIRECTION.right:
+					sprite.play("idle_right")
+				MOVE_DIRECTION.left:
+					sprite.play("idle_left")
+				MOVE_DIRECTION.front:
+					sprite.play("idle_front")
+				MOVE_DIRECTION.back:
+					sprite.play("idle_back")
 	if direction == MOVE_DIRECTION.left:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -64,6 +65,7 @@ func _physics_process(_delta: float) -> void:
 					if !inviolable:
 						hp-=1
 						inviolable=true
+						sprite.play("invul")
 						timer.start()
 					var bullet_id = collision.get_collider_id()
 					instance_from_id(bullet_id). queue_free()
@@ -71,8 +73,6 @@ func _physics_process(_delta: float) -> void:
 					if !inviolable:
 						additional_push_vector = body.linear_velocity.normalized()
 						additional_velocity = BULLET_PUSH_FORCE
-						inviolable=true
-						timer.start()
 					var bullet_id = collision.get_collider_id()
 					instance_from_id(bullet_id). queue_free()
 
