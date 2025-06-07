@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ScoreManager="*res://scenes/score_manager.tscn"
+EnemiesManager="*res://scenes/enemies_manager.tscn"
 
 [display]
 

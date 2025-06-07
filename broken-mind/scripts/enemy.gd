@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 var player
-@onready var score_manager: Node = ScoreManager
 var tilemap: TileMapLayer
 @onready var timer: Timer = $Timer
 var damaging_bullet: PackedScene = preload("res://scenes/damaging_bullet.tscn")
@@ -19,10 +18,10 @@ func _process(_delta):
 	
 	if source_id != -1:
 		if atlas_coords==Vector2i(2,2):
-			score_manager.add_point()
+			EnemiesManager.add_point()
 			queue_free()
 	else:
-		score_manager.add_point()
+		EnemiesManager.add_point()
 		queue_free()
 
 func _ready():
