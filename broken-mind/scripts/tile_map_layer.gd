@@ -6,7 +6,7 @@ func restore():
 	for y in range(used_rect.position.y, used_rect.position.y + used_rect.size.y):
 		for x in range(used_rect.position.x, used_rect.position.x + used_rect.size.x):
 			var coords = Vector2i(x, y)
-			set_cell(coords, 0, Vector2i(1, 9))
+			set_cell(coords, 1, Vector2i(0, 0))
 
 func void_tiles(n):
 	var used_rect = get_used_rect()
@@ -18,7 +18,7 @@ func void_tiles(n):
 			var source_id = get_cell_source_id(pos)
 			if source_id != -1:
 				var atlas_coords = get_cell_atlas_coords(pos)
-				if atlas_coords != Vector2i(0, 19):
+				if atlas_coords != Vector2i(1, 0):
 					var player_pos = Vector2i($"../Player".global_position[0],$"../Player".global_position[1]+11)
 					var local_pos = to_local(player_pos)
 					var tile_coords = local_to_map(local_pos)
@@ -28,7 +28,7 @@ func void_tiles(n):
 	all_coords.shuffle()
 	var player_coords = local_to_map(to_local($"../Player".global_position))
 	for i in range(min(n, all_coords.size())):
-		set_cell(all_coords[i], 0, Vector2i(0, 19))
+		set_cell(all_coords[i], 1, Vector2i(1, 0))
 	
 func _ready():
 	timer.start(4)

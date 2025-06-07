@@ -65,7 +65,7 @@ func _process(_delta):
 	var atlas_coords = tilemap.get_cell_atlas_coords(tile_coords)
 	if !inviolable:
 		if source_id != -1:
-			if atlas_coords==Vector2i(0,19):
+			if atlas_coords==Vector2i(1,0):
 				print("spadles")
 				hp-=1
 				inviolable=true
@@ -96,7 +96,7 @@ func _unhandled_input(event):
 		var source_id = tilemap.get_cell_source_id(tile_coords)
 		
 		if source_id != -1:
-			tilemap.set_cell(Vector2i(tile_coords),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords),1,Vector2i(1,0))
 		else:
 			print("Strzał poza mapę")
 		
@@ -119,19 +119,19 @@ func _unhandled_input(event):
 		var source_id4 = tilemap.get_cell_source_id(Vector2i(tile_coords[0],tile_coords[1]-1))
 		
 		if source_id != -1:
-			tilemap.set_cell(Vector2i(tile_coords),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords),1,Vector2i(1,0))
 		else:
 			print("Strzał poza mapę")
 			return
 		$ProgressBar2.start()
 		if source_id1 != -1:
-			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),1,Vector2i(1,0))
 		if source_id2 != -1:
-			tilemap.set_cell(Vector2i(tile_coords[0]-1,tile_coords[1]),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords[0]-1,tile_coords[1]),1,Vector2i(1,0))
 		if source_id3 != -1:
-			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),1,Vector2i(1,0))
 		if source_id4 != -1:
-			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),0,Vector2i(0,19))
+			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),1,Vector2i(1,0))
 	if event.is_action_pressed("restore") and $ProgressBar.full:
 		$ProgressBar.start()
 		tilemap.restore()

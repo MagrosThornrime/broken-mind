@@ -13,7 +13,7 @@ func get_all_valid_tiles() -> Array:
 
 			if source_id != -1:
 				var atlas_coords = tilemap.get_cell_atlas_coords(pos)
-				if atlas_coords != Vector2i(0, 19):
+				if atlas_coords != Vector2i(1, 0):
 					valid_tiles.append(pos)
 
 	return valid_tiles
