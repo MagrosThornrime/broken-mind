@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+var player
 var score_manager: Node
 var tilemap: TileMapLayer
 @onready var timer: Timer = $Timer
@@ -27,4 +28,5 @@ func _ready():
 func _on_timer_timeout() -> void:
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = global_position
+	bullet.target_position = player.global_position
 	get_tree().current_scene.add_child(bullet)
