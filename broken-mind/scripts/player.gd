@@ -125,6 +125,9 @@ func _unhandled_input(event):
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),0,Vector2i(0,19))
 		if source_id4 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),0,Vector2i(0,19))
+	if event.is_action_pressed("restore") and $ProgressBar.full:
+		$ProgressBar.start()
+		tilemap.restore()
 
 func _ready():
 	timer.start()
