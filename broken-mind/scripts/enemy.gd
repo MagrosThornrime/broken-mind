@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var player
-var score_manager: Node
+@onready var score_manager: Node = ScoreManager
 var tilemap: TileMapLayer
 @onready var timer: Timer = $Timer
 var damaging_bullet: PackedScene = preload("res://scenes/damaging_bullet.tscn")

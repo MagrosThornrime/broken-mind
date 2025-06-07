@@ -1,7 +1,7 @@
 extends Node
 
-@onready var label: Label = $"../Player/Label"
 @onready var points = 0
+var label
 	
 func add_point():
 	points += 1
