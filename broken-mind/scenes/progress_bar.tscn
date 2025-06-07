@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmpkaj52xflt1"]
+
+[ext_resource type="Script" uid="uid://ddftskhqgul6y" path="res://scripts/progress_bar.gd" id="1_8un81"]
+[ext_resource type="Texture2D" uid="uid://0ig4abagdfis" path="res://images/bars.png" id="1_vt3ux"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8un81"]
+atlas = ExtResource("1_vt3ux")
+region = Rect2(0, 0, 304, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iuoo"]
+atlas = ExtResource("1_vt3ux")
+region = Rect2(0, 200, 304, 104)
+
+[node name="ProgressBar" type="HBoxContainer"]
+script = ExtResource("1_8un81")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 2
+texture_under = SubResource("AtlasTexture_8un81")
+texture_progress = SubResource("AtlasTexture_1iuoo")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
