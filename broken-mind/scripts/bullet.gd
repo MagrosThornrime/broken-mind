@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed := 30.0
+@export var speed := 40.0
 var target_position: Vector2
 
 func _ready():
@@ -8,5 +8,5 @@ func _ready():
 	rotation = direction.angle()
 	linear_velocity = direction * speed
 
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(6).timeout
 	queue_free()

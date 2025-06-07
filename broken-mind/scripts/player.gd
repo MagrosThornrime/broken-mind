@@ -39,6 +39,10 @@ func _physics_process(_delta: float) -> void:
 				sprite.play("idle_front")
 			MOVE_DIRECTION.back:
 				sprite.play("idle_back")
+	if direction == MOVE_DIRECTION.left:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
 	velocity = input_direction * SPEED + additional_velocity * additional_push_vector
 	apply_floor_snap()
 	move_and_slide()
