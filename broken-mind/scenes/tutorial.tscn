@@ -16,6 +16,7 @@ texture = ExtResource("1_c13y7")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 offset_left = -339.0
 offset_top = -224.0
 offset_right = 356.0
@@ -37,20 +38,21 @@ horizontal_alignment = 1
 
 [node name="Return" type="TextureButton" parent="."]
 offset_left = -95.0
-offset_top = 121.0
+offset_top = 138.0
 offset_right = 383.0
-offset_bottom = 262.0
+offset_bottom = 279.0
 scale = Vector2(0.406158, 0.406158)
 texture_normal = ExtResource("3_cq4me")
 texture_pressed = ExtResource("4_6yjpi")
 texture_hover = ExtResource("5_gbqnl")
 
 [node name="Label" type="Label" parent="Return"]
+texture_filter = 1
 layout_mode = 0
-offset_left = 150.188
-offset_top = 27.0831
-offset_right = 203.188
-offset_bottom = 50.0831
+offset_left = 155.112
+offset_top = 29.5452
+offset_right = 208.112
+offset_bottom = 52.5452
 scale = Vector2(3.08558, 3.14546)
 text = "Return"
 

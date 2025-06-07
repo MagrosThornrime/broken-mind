@@ -17,6 +17,7 @@ texture = ExtResource("1_ouf4f")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -42,6 +43,7 @@ texture_pressed = ExtResource("3_fcv5n")
 texture_hover = ExtResource("4_4v6gu")
 
 [node name="Label" type="Label" parent="Exit"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 184.657
 offset_top = 34.4693
@@ -61,6 +63,7 @@ texture_pressed = ExtResource("3_fcv5n")
 texture_hover = ExtResource("4_4v6gu")
 
 [node name="Label" type="Label" parent="Tutorial"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 145.264
 offset_top = 24.6209
@@ -80,6 +83,7 @@ texture_pressed = ExtResource("3_fcv5n")
 texture_hover = ExtResource("4_4v6gu")
 
 [node name="Label" type="Label" parent="Start"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 182.195
 offset_top = 27.0831

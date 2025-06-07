@@ -176,33 +176,53 @@ zoom = Vector2(4, 4)
 wait_time = 2.0
 
 [node name="Label" type="Label" parent="Player"]
-offset_left = -97.0
-offset_top = -72.0
-offset_right = -36.0
-offset_bottom = -49.0
+texture_filter = 1
+offset_left = -94.0
+offset_top = -63.0
+offset_right = -33.0
+offset_bottom = -40.0
 scale = Vector2(0.467613, 0.446241)
 text = "Score: 0"
 
 [node name="Label2" type="Label" parent="Player"]
-offset_left = 69.0
-offset_top = -72.0
-offset_right = 130.0
-offset_bottom = -49.0
+texture_filter = 1
+offset_left = -94.0
+offset_top = -71.0
+offset_right = -33.0
+offset_bottom = -48.0
 scale = Vector2(0.49013, 0.428876)
 text = "HP: 0"
 
+[node name="Label3" type="Label" parent="Player"]
+texture_filter = 1
+offset_left = 9.0
+offset_top = -72.0
+offset_right = 98.0
+offset_bottom = -49.0
+scale = Vector2(0.467613, 0.446241)
+text = "Level regen"
+
+[node name="Label4" type="Label" parent="Player"]
+texture_filter = 1
+offset_left = 61.0
+offset_top = -71.0
+offset_right = 150.0
+offset_bottom = -48.0
+scale = Vector2(0.467613, 0.446241)
+text = "Grenade"
+
 [node name="ProgressBar" parent="Player" instance=ExtResource("6_p57ef")]
-offset_left = -97.0
-offset_top = -60.0
-offset_right = 207.0
-offset_bottom = 44.0
+offset_left = 7.0
+offset_top = -63.0
+offset_right = 311.0
+offset_bottom = 41.0
 scale = Vector2(0.152848, 0.143194)
 
 [node name="ProgressBar2" parent="Player" instance=ExtResource("6_p57ef")]
-offset_left = -97.0
-offset_top = -47.0
-offset_right = 207.0
-offset_bottom = 57.0
+offset_left = 54.0
+offset_top = -63.0
+offset_right = 358.0
+offset_bottom = 41.0
 scale = Vector2(0.154911, 0.14304)
 script = ExtResource("7_u5sy4")
 
