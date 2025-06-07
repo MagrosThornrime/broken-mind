@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://b6tky5h4h0fka"]
+[gd_scene load_steps=11 format=4 uid="uid://b6tky5h4h0fka"]
 
 [ext_resource type="Script" uid="uid://nwf3pt2ghl1l" path="res://scripts/manager.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://dwfs0okv3hq81" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccwvuoda7rkf2" path="res://scenes/progress_bar.tscn" id="6_p57ef"]
 [ext_resource type="AudioStream" uid="uid://bxpkpytbai2yt" path="res://audio/granat.mp3" id="7_gee14"]
 [ext_resource type="Script" uid="uid://c22234uix2cco" path="res://scripts/progress_bar2.gd" id="7_u5sy4"]
+[ext_resource type="AudioStream" uid="uid://b0llfal8ohlrw" path="res://audio/02_Heal_02.wav" id="8_gee14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
 texture = ExtResource("4_gee14")
@@ -208,6 +209,10 @@ script = ExtResource("7_u5sy4")
 [node name="granat" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_gee14")
 volume_db = 2.0
+bus = &"sfx"
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_gee14")
 bus = &"sfx"
 
 [connection signal="timeout" from="Manager/Timer" to="Manager" method="_on_timer_timeout"]

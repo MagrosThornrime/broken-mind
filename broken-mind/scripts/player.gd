@@ -83,11 +83,12 @@ func _physics_process(_delta: float) -> void:
 					%Manager.is_heart = false
 					if hp<4:
 						hp+=1
+					$"../pickup".play()
+					j_p=false
 
 
 
 func _process(_delta):
-	j_p=false
 	$Label2.text = "Hp: " + str(hp) + "/4"
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
 	var local_pos = tilemap.to_local(global_pos)
