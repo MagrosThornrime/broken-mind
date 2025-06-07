@@ -52,14 +52,14 @@ func _ready():
 	tura=0
 	spawn_multiple_enemies(2)
 	en_nr+=2
-	timer.start(3)
+	timer.start(4)
 	
 func _process(_delta):
 	EnemiesManager.manager = %Manager
 	if en_nr==0:
-		tura=min(16,tura+1)
-		spawn_multiple_enemies(2+int(tura/2))
-		en_nr+=2+int(tura/2)
+		tura+=1
+		spawn_multiple_enemies(min(20,(2+int(tura*2))))
+		en_nr+=2+int(tura*2)
 
 func spawn_heart():
 	var tiles = get_all_valid_tiles()

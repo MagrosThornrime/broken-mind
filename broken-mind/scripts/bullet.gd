@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@export var speed := 40.0
+@export var speed := 50.0
 var target_position: Vector2
 
 func _ready():
