@@ -254,8 +254,8 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y25gk"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn8n8"]
+size = Vector2(14, 4)
 
 [node name="pushing_bullet" type="RigidBody2D"]
 collision_layer = 8
@@ -271,4 +271,5 @@ sprite_frames = SubResource("SpriteFrames_d0wc3")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y25gk")
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_bn8n8")
