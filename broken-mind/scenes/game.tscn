@@ -152,7 +152,7 @@ texture = ExtResource("4_gee14")
 [sub_resource type="TileSet" id="TileSet_p57ef"]
 sources/0 = SubResource("TileSetAtlasSource_gee14")
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 
 [node name="Manager" type="Node" parent="."]
 unique_name_in_owner = true
