@@ -15,3 +15,6 @@ func _process(_delta):
 		if atlas_coords==Vector2i(0,19):
 			score_manager.add_point()
 			queue_free()
+	else:
+		score_manager.add_point()
+		queue_free()

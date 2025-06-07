@@ -71,6 +71,7 @@ func _process(_delta):
 	if hp<=0:
 		hp=4
 		print("umarłeś")
+		die()
 		
 func _unhandled_input(event):
 	if event.is_action_pressed("fire"):
@@ -92,7 +93,7 @@ func _unhandled_input(event):
 		else:
 			print("Strzał poza mapę")
 		
-	if event.is_action_pressed("bomb"):
+	if event.is_action_pressed("bomb") and $ProgressBar2.full:
 		var fire_pos
 		if direction == MOVE_DIRECTION.right:
 			fire_pos = Vector2i(global_position[0]+40,global_position[1]+8)
@@ -115,6 +116,7 @@ func _unhandled_input(event):
 		else:
 			print("Strzał poza mapę")
 			return
+		$ProgressBar2.start()
 		if source_id1 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),0,Vector2i(0,19))
 		if source_id2 != -1:
@@ -130,3 +132,6 @@ func _ready():
 func _on_timer_timeout() -> void:
 	timer.stop()
 	inviolable = false
+
+func die():
+	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
