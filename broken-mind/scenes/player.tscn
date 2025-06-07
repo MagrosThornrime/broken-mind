@@ -322,5 +322,6 @@ shape = SubResource("RectangleShape2D_fjrip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(1.17412, 1.2565)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"idle_left"
