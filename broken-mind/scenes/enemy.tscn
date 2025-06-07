@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://rbsm77l0yyof"]
+[gd_scene load_steps=9 format=3 uid="uid://rbsm77l0yyof"]
 
 [ext_resource type="Texture2D" uid="uid://b7prdjpf7anqb" path="res://images/slime_green.png" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://2m5ihjonrqi7" path="res://scripts/enemy.gd" id="1_md0e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
 atlas = ExtResource("1_7p1mj")
@@ -43,6 +44,9 @@ size = Vector2(14, 13)
 
 [node name="Enemy" type="RigidBody2D"]
 gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
