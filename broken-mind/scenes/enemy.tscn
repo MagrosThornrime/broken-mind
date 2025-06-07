@@ -1,38 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://rbsm77l0yyof"]
+[gd_scene load_steps=16 format=3 uid="uid://rbsm77l0yyof"]
 
-[ext_resource type="Texture2D" uid="uid://b7prdjpf7anqb" path="res://images/slime_green.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://2m5ihjonrqi7" path="res://scripts/enemy.gd" id="1_md0e3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_md0e3"]
-atlas = ExtResource("1_7p1mj")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ra3w"]
-atlas = ExtResource("1_7p1mj")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("1_7p1mj")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("1_7p1mj")
-region = Rect2(72, 24, 24, 24)
+[ext_resource type="Texture2D" uid="uid://dlp8yj08s5nt5" path="res://images/enemy/B Flame 1.png" id="2_wtq4b"]
+[ext_resource type="Texture2D" uid="uid://sa6ka6j8jeuj" path="res://images/enemy/B Flame 2.png" id="3_j0cyh"]
+[ext_resource type="Texture2D" uid="uid://dwbyhdkdkrf1i" path="res://images/enemy/B Flame 3.png" id="4_g0wcc"]
+[ext_resource type="Texture2D" uid="uid://dyxb3ajddpjka" path="res://images/enemy/B Flame 4.png" id="5_s1ycm"]
+[ext_resource type="Texture2D" uid="uid://bjvy7e60c4ccd" path="res://images/enemy/B Flame 5.png" id="6_shcg2"]
+[ext_resource type="Texture2D" uid="uid://d0qdoa3r5wrym" path="res://images/enemy/B Flame 6.png" id="7_ile5s"]
+[ext_resource type="Texture2D" uid="uid://52qmrw4ka6sq" path="res://images/enemy/B Flame 7.png" id="8_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://dv76jbwe4mj07" path="res://images/enemy/B Flame 8.png" id="9_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://di7dfprcd6iec" path="res://images/enemy/B Flame 9.png" id="10_rogs8"]
+[ext_resource type="Texture2D" uid="uid://bm3sh7i3qak5h" path="res://images/enemy/B Flame 10.png" id="11_wrm80"]
+[ext_resource type="Texture2D" uid="uid://c3p0owhq56g3s" path="res://images/enemy/B Flame 11.png" id="12_6awcb"]
+[ext_resource type="Texture2D" uid="uid://ccxf6ieuts6o5" path="res://images/enemy/B Flame 12.png" id="13_wjec0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xwavj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_md0e3")
+"texture": ExtResource("2_wtq4b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ra3w")
+"texture": ExtResource("3_j0cyh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5uy6h")
+"texture": ExtResource("4_g0wcc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4w8v")
+"texture": ExtResource("5_s1ycm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ile5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1x4g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2pwtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rogs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wrm80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6awcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wjec0")
 }],
 "loop": true,
 "name": &"idle",
@@ -50,12 +69,13 @@ script = ExtResource("1_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_xwavj")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_nenq2")
 
 [node name="Timer" type="Timer" parent="."]
