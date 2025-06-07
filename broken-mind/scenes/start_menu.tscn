@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b28gaqjr1v7sv"]
+[gd_scene load_steps=6 format=3 uid="uid://b28gaqjr1v7sv"]
 
+[ext_resource type="Script" uid="uid://dcfp1oftksnd3" path="res://scripts/start_menu.gd" id="1_fcv5n"]
 [ext_resource type="Texture2D" uid="uid://dmwndvi51dymj" path="res://images/Graveyard_5.jpg" id="1_ouf4f"]
+[ext_resource type="Texture2D" uid="uid://bwtinxit1mjlj" path="res://images/buttons/buttonNormal.png" id="2_h61rw"]
+[ext_resource type="Texture2D" uid="uid://dmcjcqwefddit" path="res://images/buttons/buttonPressed.png" id="3_fcv5n"]
+[ext_resource type="Texture2D" uid="uid://rupojheabma" path="res://images/buttons/buttonHighLight.png" id="4_4v6gu"]
 
 [node name="StartMenu" type="Node2D"]
+script = ExtResource("1_fcv5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.999954, 1.5)
@@ -26,14 +31,63 @@ grow_vertical = 2
 scale = Vector2(3.4226, 2.53427)
 text = "Broken Mind"
 
-[node name="Start" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Exit" type="TextureButton" parent="."]
+offset_left = -93.0
+offset_top = 188.0
+offset_right = 385.0
+offset_bottom = 329.0
+scale = Vector2(0.406158, 0.406158)
+texture_normal = ExtResource("2_h61rw")
+texture_pressed = ExtResource("3_fcv5n")
+texture_hover = ExtResource("4_4v6gu")
+
+[node name="Label" type="Label" parent="Exit"]
+layout_mode = 0
+offset_left = 184.657
+offset_top = 34.4693
+offset_right = 224.657
+offset_bottom = 57.4693
+scale = Vector2(3.08558, 3.14546)
+text = "Exit"
 
 [node name="Tutorial" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -94.0
+offset_top = 105.0
+offset_right = 384.0
+offset_bottom = 246.0
+scale = Vector2(0.406158, 0.406158)
+texture_normal = ExtResource("2_h61rw")
+texture_pressed = ExtResource("3_fcv5n")
+texture_hover = ExtResource("4_4v6gu")
 
-[node name="Exit" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 145.264
+offset_top = 24.6209
+offset_right = 206.264
+offset_bottom = 47.6209
+scale = Vector2(3.08558, 3.14546)
+text = "Tutorial"
+
+[node name="Start" type="TextureButton" parent="."]
+offset_left = -95.0
+offset_top = 27.0
+offset_right = 383.0
+offset_bottom = 168.0
+scale = Vector2(0.406158, 0.406158)
+texture_normal = ExtResource("2_h61rw")
+texture_pressed = ExtResource("3_fcv5n")
+texture_hover = ExtResource("4_4v6gu")
+
+[node name="Label" type="Label" parent="Start"]
+layout_mode = 0
+offset_left = 182.195
+offset_top = 27.0831
+offset_right = 222.195
+offset_bottom = 50.0831
+scale = Vector2(3.08558, 3.14546)
+text = "Start"
+
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

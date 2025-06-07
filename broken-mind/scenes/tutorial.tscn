@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b18v3tikcus0a"]
+[gd_scene load_steps=3 format=3 uid="uid://cryhvlwrr6qyc"]
 
-[ext_resource type="Script" uid="uid://ck22a7o6ddafi" path="res://scripts/tutorial.gd" id="1_8ho6b"]
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_8ho6b"]
 [ext_resource type="Texture2D" uid="uid://bg01s7n8ncole" path="res://images/blank_page.jpg" id="1_c13y7"]
 
 [node name="Tutorial" type="Node2D"]

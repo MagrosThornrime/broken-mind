@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Broken Mind"
-run/main_scene="uid://b6tky5h4h0fka"
+run/main_scene="uid://b28gaqjr1v7sv"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
