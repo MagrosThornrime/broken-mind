@@ -2,6 +2,8 @@ extends RigidBody2D
 
 var score_manager: Node
 var tilemap: TileMapLayer
+@onready var timer: Timer = $Timer
+var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 
 func _process(_delta):
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
@@ -18,3 +20,11 @@ func _process(_delta):
 	else:
 		score_manager.add_point()
 		queue_free()
+
+func _ready():
+	timer.start(3)
+
+func _on_timer_timeout() -> void:
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = global_position
+	get_tree().current_scene.add_child(bullet)
