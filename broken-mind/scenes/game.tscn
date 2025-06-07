@@ -325,6 +325,9 @@ tile_map_data = PackedByteArray("AAD+//7/AAAAAAkAAAD///7/AAAAAAkAAAAAAP7/AAAAAAk
 tile_set = SubResource("TileSet_p57ef")
 script = ExtResource("5_gee14")
 
+[node name="Timer" type="Timer" parent="TileMapLayer"]
+wait_time = 5.0
+
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 10
 motion_mode = 1
@@ -365,4 +368,5 @@ offset_bottom = 17.0
 scale = Vector2(0.40832, 0.443745)
 script = ExtResource("7_u5sy4")
 
+[connection signal="timeout" from="TileMapLayer/Timer" to="TileMapLayer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
