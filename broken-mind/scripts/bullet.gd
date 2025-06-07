@@ -10,4 +10,4 @@ func _ready():
 	queue_free()
 
 #TODO:
-#Kolizja pocisku i gracza
+#Usuwanie pocisku po kolizji

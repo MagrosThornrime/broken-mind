@@ -42,10 +42,17 @@ func _physics_process(_delta: float) -> void:
 	
 	for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
-			if collision.get_collider() is RigidBody2D:
-				collision.get_collider().apply_central_impulse(
-					-collision.get_normal() * PUSH_FORCE
-				)
+			var body = collision.get_collider()
+			if body is RigidBody2D:
+				var layer = body.collision_layer
+				if layer & (1 << 0):
+					collision.get_collider().apply_central_impulse(
+						-collision.get_normal() * PUSH_FORCE
+					)
+				elif layer & (1 << 1) and !inviolable:
+					hp-=1
+					inviolable=true
+					timer.start()
 
 
 func _process(_delta):
