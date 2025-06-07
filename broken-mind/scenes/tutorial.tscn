@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b18v3tikcus0a"]
+[gd_scene load_steps=6 format=3 uid="uid://cryhvlwrr6qyc"]
 
 [ext_resource type="Script" uid="uid://ck22a7o6ddafi" path="res://scripts/tutorial.gd" id="1_8ho6b"]
 [ext_resource type="Texture2D" uid="uid://bg01s7n8ncole" path="res://images/blank_page.jpg" id="1_c13y7"]
+[ext_resource type="Texture2D" uid="uid://bwtinxit1mjlj" path="res://images/buttons/buttonNormal.png" id="3_cq4me"]
+[ext_resource type="Texture2D" uid="uid://dmcjcqwefddit" path="res://images/buttons/buttonPressed.png" id="4_6yjpi"]
+[ext_resource type="Texture2D" uid="uid://rupojheabma" path="res://images/buttons/buttonHighLight.png" id="5_gbqnl"]
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_8ho6b")
@@ -29,10 +32,23 @@ Rzut granatem - g
 
 Odnowa pól - spacja"
 
-[node name="Label2" type="Label" parent="."]
-offset_left = -133.0
-offset_top = 134.0
-offset_right = -39.0
-offset_bottom = 157.0
-scale = Vector2(2.91145, 3.47655)
-text = "Powodzenia"
+[node name="Return" type="TextureButton" parent="."]
+offset_left = -95.0
+offset_top = 121.0
+offset_right = 383.0
+offset_bottom = 262.0
+scale = Vector2(0.406158, 0.406158)
+texture_normal = ExtResource("3_cq4me")
+texture_pressed = ExtResource("4_6yjpi")
+texture_hover = ExtResource("5_gbqnl")
+
+[node name="Label" type="Label" parent="Return"]
+layout_mode = 0
+offset_left = 150.188
+offset_top = 27.0831
+offset_right = 203.188
+offset_bottom = 50.0831
+scale = Vector2(3.08558, 3.14546)
+text = "Return"
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

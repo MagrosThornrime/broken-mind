@@ -29,7 +29,6 @@ func spawn_enemy(tiles: Array):
 
 	var world_pos = tilemap.map_to_local(tile_pos) + tilemap.position
 	var enemy = enemy_scene.instantiate()
-	enemy.score_manager = $"../ScoreManager"
 	enemy.tilemap = tilemap
 	enemy.player = $"../Player"
 	enemy.global_position = Vector2i(world_pos[0],world_pos[1]-6)
@@ -45,4 +44,5 @@ func spawn_multiple_enemies(count: int):
 		spawn_enemy(tiles)
 
 func _ready():
+	EnemiesManager.manager = %Manager
 	spawn_multiple_enemies(3)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dneuko7kaa6gt"]
+[gd_scene load_steps=3 format=3 uid="uid://dneuko7kaa6gt"]
 
+[ext_resource type="Script" uid="uid://cgprp6ymsymmh" path="res://scripts/game_over.gd" id="1_dy3ie"]
 [ext_resource type="Texture2D" uid="uid://jrdwx8i4ggku" path="res://images/Graveyard_2.jpg" id="1_ncp31"]
 
 [node name="Gameover" type="Node2D"]
+script = ExtResource("1_dy3ie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.999954, 1.5)
@@ -10,3 +12,19 @@ scale = Vector2(0.519531, 0.717548)
 texture = ExtResource("1_ncp31")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -144.0
+offset_top = -207.0
+offset_right = -52.0
+offset_bottom = -184.0
+scale = Vector2(3.01549, 3.01549)
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -44.0
+offset_top = -22.0
+offset_right = 17.0
+offset_bottom = 1.0
+scale = Vector2(1.6615, 1.6615)
+text = "Score: 0"

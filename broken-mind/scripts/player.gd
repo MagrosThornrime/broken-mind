@@ -156,6 +156,7 @@ func _unhandled_input(event):
 		tilemap.restore()
 
 func _ready():
+	EnemiesManager.label = $Label
 	timer.start()
 
 func _on_timer_timeout() -> void:
