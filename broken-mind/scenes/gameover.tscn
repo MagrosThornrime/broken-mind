@@ -17,6 +17,7 @@ texture = ExtResource("1_ncp31")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 offset_left = -144.0
 offset_top = -207.0
 offset_right = -52.0
@@ -25,6 +26,7 @@ scale = Vector2(3.01549, 3.01549)
 text = "GAME OVER"
 
 [node name="ScoreLabel" type="Label" parent="."]
+texture_filter = 1
 offset_left = -44.0
 offset_top = -22.0
 offset_right = 17.0
@@ -43,6 +45,7 @@ texture_pressed = ExtResource("4_qwp2v")
 texture_hover = ExtResource("5_3gj0k")
 
 [node name="Label" type="Label" parent="Start"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 182.195
 offset_top = 27.0831
@@ -62,6 +65,7 @@ texture_pressed = ExtResource("4_qwp2v")
 texture_hover = ExtResource("5_3gj0k")
 
 [node name="Label" type="Label" parent="Exit"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 184.657
 offset_top = 34.4693
