@@ -14,6 +14,7 @@ var hp = 4
 var additional_velocity = 0
 var additional_push_vector = Vector2(0, 0)
 const BULLET_PUSH_FORCE = 150
+var j_p = false
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -75,16 +76,18 @@ func _physics_process(_delta: float) -> void:
 						additional_velocity = BULLET_PUSH_FORCE
 					var bullet_id = collision.get_collider_id()
 					instance_from_id(bullet_id). queue_free()
-				elif layer & (1 << 5):
-					if hp<4:
-						hp+=1
+				elif layer & (1 << 5) and !j_p:
+					j_p=true
 					var heart = collision.get_collider_id()
 					instance_from_id(heart).queue_free()
 					%Manager.is_heart = false
+					if hp<4:
+						hp+=1
 
 
 
 func _process(_delta):
+	j_p=false
 	$Label2.text = "Hp: " + str(hp) + "/4"
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
 	var local_pos = tilemap.to_local(global_pos)
