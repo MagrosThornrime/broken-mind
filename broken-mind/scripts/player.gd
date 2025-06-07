@@ -157,6 +157,7 @@ func _unhandled_input(event):
 		else:
 			print("Strzał poza mapę")
 			return
+		$"../granat".play()
 		$ProgressBar2.start()
 		if source_id1 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),0,Vector2i(2,2))

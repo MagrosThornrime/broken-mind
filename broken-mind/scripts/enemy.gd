@@ -25,7 +25,8 @@ func _process(_delta):
 		queue_free()
 
 func _ready():
-	timer.start(3)
+	var random_time = randf_range(2.0, 4.0)
+	timer.start(random_time)
 
 func _on_timer_timeout() -> void:
 	var bullet = null

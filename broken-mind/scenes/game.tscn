@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://b6tky5h4h0fka"]
+[gd_scene load_steps=10 format=4 uid="uid://b6tky5h4h0fka"]
 
 [ext_resource type="Script" uid="uid://nwf3pt2ghl1l" path="res://scripts/manager.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://dwfs0okv3hq81" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dv16ruts7p8ld" path="res://images/Dungeon Tile Set.png" id="4_gee14"]
 [ext_resource type="Script" uid="uid://bh0ftmhs4843b" path="res://scripts/tile_map_layer.gd" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://ccwvuoda7rkf2" path="res://scenes/progress_bar.tscn" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://bxpkpytbai2yt" path="res://audio/granat.mp3" id="7_gee14"]
 [ext_resource type="Script" uid="uid://c22234uix2cco" path="res://scripts/progress_bar2.gd" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
@@ -203,6 +204,11 @@ offset_right = 207.0
 offset_bottom = 57.0
 scale = Vector2(0.154911, 0.14304)
 script = ExtResource("7_u5sy4")
+
+[node name="granat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gee14")
+volume_db = 2.0
+bus = &"sfx"
 
 [connection signal="timeout" from="Manager/Timer" to="Manager" method="_on_timer_timeout"]
 [connection signal="timeout" from="TileMapLayer/Timer" to="TileMapLayer" method="_on_timer_timeout"]
