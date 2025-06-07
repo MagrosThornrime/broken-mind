@@ -115,24 +115,24 @@ func _process(_delta):
 		die()
 		
 func _unhandled_input(event):
-	if event.is_action_pressed("fire"):
-		var fire_pos
-		if direction == MOVE_DIRECTION.right:
-			fire_pos = Vector2i(global_position[0]+40,global_position[1]+8)
-		elif direction == MOVE_DIRECTION.left:
-			fire_pos = Vector2i(global_position[0]-40,global_position[1]+8)
-		elif direction == MOVE_DIRECTION.back:
-			fire_pos = Vector2i(global_position[0],global_position[1]+40)
-		else:
-			fire_pos = Vector2i(global_position[0],global_position[1]-30)
-		var local_pos = tilemap.to_local(fire_pos)
-		var tile_coords = tilemap.local_to_map(local_pos)
-		var source_id = tilemap.get_cell_source_id(tile_coords)
-		
-		if source_id != -1:
-			tilemap.set_cell(Vector2i(tile_coords),0,Vector2i(2,2))
-		else:
-			print("Strzał poza mapę")
+	#if event.is_action_pressed("fire"):
+		#var fire_pos
+		#if direction == MOVE_DIRECTION.right:
+			#fire_pos = Vector2i(global_position[0]+40,global_position[1]+8)
+		#elif direction == MOVE_DIRECTION.left:
+			#fire_pos = Vector2i(global_position[0]-40,global_position[1]+8)
+		#elif direction == MOVE_DIRECTION.back:
+			#fire_pos = Vector2i(global_position[0],global_position[1]+40)
+		#else:
+			#fire_pos = Vector2i(global_position[0],global_position[1]-30)
+		#var local_pos = tilemap.to_local(fire_pos)
+		#var tile_coords = tilemap.local_to_map(local_pos)
+		#var source_id = tilemap.get_cell_source_id(tile_coords)
+		#
+		#if source_id != -1:
+			#tilemap.set_cell(Vector2i(tile_coords),0,Vector2i(2,2))
+		#else:
+			#print("Strzał poza mapę")
 		
 	if event.is_action_pressed("bomb") and $ProgressBar2.full:
 		var fire_pos
