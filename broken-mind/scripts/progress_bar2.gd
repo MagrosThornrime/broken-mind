@@ -3,7 +3,7 @@ extends HBoxContainer
 @onready var bar: TextureProgressBar = $TextureProgressBar
 @onready var timer: Timer = $Timer
 var full
-const max_time = 60
+const max_time = 10
 
 func _ready() -> void:
 	timer.start(max_time)

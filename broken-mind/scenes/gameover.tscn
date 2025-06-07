@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dneuko7kaa6gt"]
+
+[ext_resource type="Texture2D" uid="uid://dqumfgo407p4d" path="res://images/100.jpg" id="1_ncp31"]
+
+[node name="Gameover" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.388596, 0.290684)
+texture = ExtResource("1_ncp31")
+
+[node name="Camera2D" type="Camera2D" parent="."]
