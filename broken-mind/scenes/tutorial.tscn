@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://b18v3tikcus0a"]
+
+[ext_resource type="Script" uid="uid://ck22a7o6ddafi" path="res://scripts/tutorial.gd" id="1_8ho6b"]
+[ext_resource type="Texture2D" uid="uid://bg01s7n8ncole" path="res://images/blank_page.jpg" id="1_c13y7"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_8ho6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.265004, 0.299592)
+texture = ExtResource("1_c13y7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -339.0
+offset_top = -224.0
+offset_right = 356.0
+offset_bottom = 252.0
+text = "Celem gry jest zdobycie jak najwięcej punków. 
+Punkty zdobywa się za wrzucanie przeciwników do voidu. 
+Popychaj przeciwników jednocześnie nie dając się trafić ich pociskami
+
+Sterowanie:
+
+Ruch - wasd
+
+Rzut granatem - g
+
+Odnowa pól - spacja"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -133.0
+offset_top = 134.0
+offset_right = -39.0
+offset_bottom = 157.0
+scale = Vector2(2.91145, 3.47655)
+text = "Powodzenia"
