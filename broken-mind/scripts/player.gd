@@ -18,19 +18,26 @@ var j_p = false
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if input_direction[0] > 0:
+		direction = MOVE_DIRECTION.right
+	elif input_direction[0] < 0:
+		direction = MOVE_DIRECTION.left
+	elif input_direction[1] < 0:
+		direction = MOVE_DIRECTION.front
+	elif input_direction[1] > 0:
+		direction = MOVE_DIRECTION.back
+	
 	if !inviolable:
-		if(input_direction[0] > 0):
-			sprite.play("walk_right")
-			direction = MOVE_DIRECTION.right
-		if(input_direction[0] < 0):
-			sprite.play("walk_left")
-			direction = MOVE_DIRECTION.left
-		if(input_direction[1] < 0):
-			sprite.play("walk_up")
-			direction = MOVE_DIRECTION.front
-		if(input_direction[1] > 0):
-			sprite.play("walk_down")
-			direction = MOVE_DIRECTION.back
+		match direction:
+			MOVE_DIRECTION.right:
+				sprite.play("walk_right")
+			MOVE_DIRECTION.left:
+				sprite.play("walk_left")
+			MOVE_DIRECTION.front:
+				sprite.play("walk_up")
+			MOVE_DIRECTION.back:
+				sprite.play("walk_down")
 		if velocity == Vector2.ZERO:
 			match direction:
 				MOVE_DIRECTION.right:
