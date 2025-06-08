@@ -16,6 +16,29 @@ var additional_push_vector = Vector2(0, 0)
 const BULLET_PUSH_FORCE = 150
 var j_p = false
 
+func _play_idle():
+	match direction:
+		MOVE_DIRECTION.right:
+			sprite.play("idle_right")
+		MOVE_DIRECTION.left:
+			sprite.play("idle_left")
+		MOVE_DIRECTION.front:
+			sprite.play("idle_front")
+		MOVE_DIRECTION.back:
+			sprite.play("idle_back")
+
+func _play_walk():
+	match direction:
+		MOVE_DIRECTION.right:
+			sprite.play("walk_right")
+		MOVE_DIRECTION.left:
+			sprite.play("walk_left")
+		MOVE_DIRECTION.front:
+			sprite.play("walk_up")
+		MOVE_DIRECTION.back:
+			sprite.play("walk_down")
+	
+
 func _physics_process(_delta: float) -> void:
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
@@ -29,25 +52,9 @@ func _physics_process(_delta: float) -> void:
 		direction = MOVE_DIRECTION.back
 	
 	if !inviolable:
-		match direction:
-			MOVE_DIRECTION.right:
-				sprite.play("walk_right")
-			MOVE_DIRECTION.left:
-				sprite.play("walk_left")
-			MOVE_DIRECTION.front:
-				sprite.play("walk_up")
-			MOVE_DIRECTION.back:
-				sprite.play("walk_down")
+		_play_walk()
 		if velocity == Vector2.ZERO:
-			match direction:
-				MOVE_DIRECTION.right:
-					sprite.play("idle_right")
-				MOVE_DIRECTION.left:
-					sprite.play("idle_left")
-				MOVE_DIRECTION.front:
-					sprite.play("idle_front")
-				MOVE_DIRECTION.back:
-					sprite.play("idle_back")
+			_play_idle()
 	if direction == MOVE_DIRECTION.left:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -97,7 +104,7 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta):
 	j_p=false
-	$Label2.text = "Hp: " + str(hp) + "/4"
+	$Camera2D/Label2.text = "Hp: " + str(hp) + "/4"
 	var global_pos = Vector2i(global_position[0],global_position[1]+11)
 	var local_pos = tilemap.to_local(global_pos)
 	var tile_coords = tilemap.local_to_map(local_pos)
@@ -143,16 +150,16 @@ func _unhandled_input(event):
 		#else:
 			#print("Strzał poza mapę")
 		
-	if event.is_action_pressed("bomb") and $ProgressBar2.full:
+	if event.is_action_pressed("bomb") and $Camera2D/ProgressBar2.full:
 		var fire_pos
 		if direction == MOVE_DIRECTION.right:
 			fire_pos = Vector2i(global_position[0]+40,global_position[1]+8)
 		elif direction == MOVE_DIRECTION.left:
 			fire_pos = Vector2i(global_position[0]-40,global_position[1]+8)
 		elif direction == MOVE_DIRECTION.back:
-			fire_pos = Vector2i(global_position[0],global_position[1]+40)
+			fire_pos = Vector2i(global_position[0],global_position[1]+50)
 		else:
-			fire_pos = Vector2i(global_position[0],global_position[1]-30)
+			fire_pos = Vector2i(global_position[0],global_position[1]-40)
 		var local_pos = tilemap.to_local(fire_pos)
 		var tile_coords = tilemap.local_to_map(local_pos)
 		var source_id = tilemap.get_cell_source_id(tile_coords)
@@ -167,7 +174,7 @@ func _unhandled_input(event):
 			print("Strzał poza mapę")
 			return
 		$"../granat".play()
-		$ProgressBar2.start()
+		$Camera2D/ProgressBar2.start()
 		if source_id1 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),0,Vector2i(2,2))
 		if source_id2 != -1:
@@ -176,15 +183,16 @@ func _unhandled_input(event):
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),0,Vector2i(2,2))
 		if source_id4 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),0,Vector2i(2,2))
-	if event.is_action_pressed("restore") and $ProgressBar.full:
-		$ProgressBar.start()
+	if event.is_action_pressed("restore") and $Camera2D/ProgressBar.full:
+		$Camera2D/ProgressBar.start()
 		tilemap.restore()
 
 func _ready():
-	EnemiesManager.label = $Label
+	EnemiesManager.label = $Camera2D/Label
 	timer.start()
 
 func _on_timer_timeout() -> void:
+	_play_idle()
 	timer.stop()
 	inviolable = false
 
