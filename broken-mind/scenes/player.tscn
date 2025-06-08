@@ -315,6 +315,8 @@ collision_layer = 2
 collision_mask = 63
 slide_on_ceiling = false
 wall_min_slide_angle = 0.0
+floor_snap_length = 0.0
+platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_g2els")
 
