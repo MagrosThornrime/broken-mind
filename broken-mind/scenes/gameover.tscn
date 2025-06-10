@@ -47,12 +47,12 @@ texture_hover = ExtResource("5_3gj0k")
 [node name="Label" type="Label" parent="Start"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 182.195
-offset_top = 27.0831
-offset_right = 222.195
-offset_bottom = 50.0831
+offset_left = 157.574
+offset_top = 34.4693
+offset_right = 209.574
+offset_bottom = 57.4693
 scale = Vector2(3.08558, 3.14546)
-text = "Start"
+text = "Replay"
 
 [node name="Exit" type="TextureButton" parent="."]
 offset_left = 113.0
@@ -67,12 +67,12 @@ texture_hover = ExtResource("5_3gj0k")
 [node name="Label" type="Label" parent="Exit"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 184.657
-offset_top = 34.4693
-offset_right = 224.657
-offset_bottom = 57.4693
+offset_left = 167.423
+offset_top = 29.5452
+offset_right = 212.423
+offset_bottom = 52.5452
 scale = Vector2(3.08558, 3.14546)
-text = "Exit"
+text = "Menu"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
