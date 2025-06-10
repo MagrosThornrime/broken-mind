@@ -18,4 +18,7 @@ func _on_start_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	ButtonSound.play()
-	get_tree().quit()
+	Music.stop()
+	Music.stream = load("res://audio/claimed_by_the_void.mp3")
+	Music.play()
+	get_tree().change_scene_to_file("res://scenes//start_menu.tscn")

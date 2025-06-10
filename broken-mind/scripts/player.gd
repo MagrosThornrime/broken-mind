@@ -10,7 +10,7 @@ const PUSH_FORCE = 50
 enum MOVE_DIRECTION {front, right, back, left}
 var direction = MOVE_DIRECTION.front
 var inviolable = false
-var hp = 4
+var hp = 5
 var additional_velocity = 0
 var additional_push_vector = Vector2(0, 0)
 const BULLET_PUSH_FORCE = 150
@@ -96,7 +96,7 @@ func _physics_process(_delta: float) -> void:
 					var heart = collision.get_collider_id()
 					instance_from_id(heart).queue_free()
 					%Manager.is_heart = false
-					if hp<4:
+					if hp<5:
 						hp+=1
 					$"../pickup".play()
 					
@@ -105,8 +105,8 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta):
 	j_p=false
-	$Camera2D/Label2.text = "Hp: " + str(hp) + "/4"
-	var global_pos = Vector2i(global_position[0],global_position[1]+11)
+	$Camera2D/Label2.text = "Hp: " + str(hp) + "/5"
+	var global_pos = Vector2i(global_position[0],global_position[1]+9)
 	var local_pos = tilemap.to_local(global_pos)
 	var tile_coords = tilemap.local_to_map(local_pos)
 
@@ -127,7 +127,7 @@ func _process(_delta):
 			sprite.play("invul")
 			timer.start()
 	if hp<=0:
-		hp=4
+		hp=5
 		print("umarłeś")
 		die()
 		
