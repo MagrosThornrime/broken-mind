@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 EnemiesManager="*res://scenes/enemies_manager.tscn"
 Music="*res://scenes/music.tscn"
 ButtonSound="*res://scenes/button_sound.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -27,6 +29,10 @@ window/size/viewport_width=800
 window/size/viewport_height=600
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
 
 [input]
 
