@@ -151,7 +151,7 @@ func _unhandled_input(event):
 		#else:
 			#print("Strzał poza mapę")
 		
-	if event.is_action_pressed("bomb") and $Camera2D/ProgressBar2.full:
+	if event.is_action_pressed("bomb") and $Camera2D/GrenadeBar.full:
 		var fire_pos
 		if direction == MOVE_DIRECTION.right:
 			fire_pos = Vector2i(global_position[0]+40,global_position[1]+8)
@@ -175,7 +175,7 @@ func _unhandled_input(event):
 			print("Strzał poza mapę")
 			return
 		$"../granat".play()
-		$Camera2D/ProgressBar2.start()
+		$Camera2D/GrenadeBar.start()
 		if source_id1 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0]+1,tile_coords[1]),0,Vector2i(2,2))
 		if source_id2 != -1:
@@ -184,8 +184,8 @@ func _unhandled_input(event):
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]+1),0,Vector2i(2,2))
 		if source_id4 != -1:
 			tilemap.set_cell(Vector2i(tile_coords[0],tile_coords[1]-1),0,Vector2i(2,2))
-	if event.is_action_pressed("restore") and $Camera2D/ProgressBar.full:
-		$Camera2D/ProgressBar.start()
+	if event.is_action_pressed("restore") and $Camera2D/RegenBar.full:
+		$Camera2D/RegenBar.start()
 		tilemap.restore()
 
 func _ready():
